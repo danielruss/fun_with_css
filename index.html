@@ -3,7 +3,31 @@
   <head>
     <link rel="stylesheet" href="fun.css" />
     <script type="text/javascript" src="fun.js"></script>
-    <style></style>
+    <style>
+      .droptarget {
+        display: flex;
+        background-color: beige;
+        justify-content: center;
+        align-items: center;
+        min-height: 100px;
+        width: 75%;
+        margin-left: 12.5%;
+        margin-top: 20px;
+        border: 10px solid transparent;
+        font-family: "Courier New", Courier, monospace;
+      }
+
+      .item {
+        font-size: large;
+        width: max-content;
+      }
+      .boldborder {
+        border: 10px solid black;
+      }
+      .grey {
+        background-color: darkgray;
+      }
+    </style>
   </head>
   <body>
     <div>
@@ -13,5 +37,83 @@
     </div>
 
     <div id="gridParent"></div>
+
+    <div id="dropTest" class="droptarget"></div>
+
+    <p id="p1" draggable="true">This is draggable</p>
+    <p id="p2" draggable="true">This is another draggable object</p>
   </body>
-</html>
+
+  <script>
+    const dropArea = document.getElementById("dropTest");
+
+    // handle the droppable data...
+    function dragstart_handler(event) {
+      event.dataTransfer.setData("text/plain", event.target.innerText);
+      event.dataTransfer.effectAllowed = "copy";
+    }
+    document.querySelectorAll("p[draggable=true]").forEach((element) => {
+      element.addEventListener("dragstart", dragstart_handler);
+    });
+
+    // when the element goes over the drop target...
+    dropArea.addEventListener("dragenter", (event) => {
+      dropArea.classList.add("boldborder");
+    });
+    dropArea.addEventListener("dragleave", (event) => {
+      dropArea.classList.remove("boldborder");
+    });
+
+    /// handle the drop...
+    dropArea.addEventListener("dragover", (event) => {
+      event.stopPropagation();
+      event.preventDefault();
+      // Style the drag-and-drop as a "copy file" operation.
+      event.dataTransfer.dropEffect = "copy";
+    });
+    dropArea.addEventListener("drop", (event) => {
+      event.stopPropagation();
+      event.preventDefault();
+      const fileList = event.dataTransfer.files;
+      if (fileList.length > 0) {
+        if (fileList.length == 1) {
+          dropArea.innerText = fileList[0].name;
+        } else {
+          let listElement = document.createElement("ol");
+          Array.from(fileList).forEach((file) => {
+            let fileNameElement = document.createElement("li");
+            fileNameElement.innerText = file.name;
+            listElement.appendChild(fileNameElement);
+          });
+          dropArea.innerText = "";
+          dropArea.appendChild(listElement);
+        }
+      } else {
+        dropArea.innerText = event.dataTransfer.getData("text/plain");
+      }
+      dropArea.classList.remove("boldborder");
+    });
+  </script>
+
+  <!--
+  <script>
+    function dragstart_handler(ev) {
+      // Add the target element's id to the data transfer object
+      ev.dataTransfer.setData("application/my-app", ev.target.id);
+      ev.dataTransfer.effectAllowed = "move";
+    }
+    function dragover_handler(ev) {
+      ev.preventDefault();
+      ev.dataTransfer.dropEffect = "move";
+    }
+    function drop_handler(ev) {
+      ev.preventDefault();
+      // Get the id of the target and add the moved element to the target's DOM
+      const data = ev.dataTransfer.getData("application/my-app");
+      ev.target.appendChild(document.getElementById(data));
+    }
+  </script>
+
+  <p id="p1a" draggable="true" ondragstart="dragstart_handler(event)">This element is draggable.</p>
+  <div id="target" ondrop="drop_handler(event)" ondragover="dragover_handler(event)">Drop Zone</div>
+--></html>
