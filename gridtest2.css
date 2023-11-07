@@ -1,0 +1,78 @@
+* {
+    --unselected-color:rgb(240, 240, 240);
+    --hover-color:rgb(230, 230, 230);
+    --check-color:rgb(60, 145, 222);
+    --border-color: rgb(130, 193, 230);
+}
+
+.grid {
+    display: grid;
+    grid-gap: 5px;
+    grid-template-columns: auto repeat(12,min-content);
+    align-items: center;
+}
+
+.grid > .instructions {
+    grid-column: 1/-1;
+}
+
+.grid-column-label{
+    font-weight: bold;
+    text-align: center;
+    font-size: small;
+}
+
+.grid-question-text {
+    grid-column: 1;
+    font-size: small;
+}
+.grid-response{
+    text-align: center;
+}
+
+.grid label span{
+    display: none;
+}
+
+@media screen and (max-width:600px){
+    .grid  label {
+        display: initial;
+        align-items: center;
+    }
+    .grid-question-text {
+        grid-column: 1/-1;
+        font-size: small;
+        margin-top: 10px;
+        margin-bottom: 10px;
+    }
+    .grid-response{
+        text-align: center;
+        grid-column: 1/-1;
+    }
+    .grid input[type="checkbox"] {
+        display: none;
+    }
+
+    .grid input[type="checkbox"] {
+        display: none;
+    }
+
+    .grid-column-label{
+        display:none;
+    }
+
+    .grid-response > label > input[type=checkbox] + span {
+        display: block;
+        background-color: var(--unselected-color);
+        border: solid 3px var(--unselected-color);
+    }
+    label input[type=checkbox]:hover + span {
+        background-color: var(--hover-color);
+        border: solid 3px var(--border-color);
+    }
+    label input[type=checkbox]:checked + span {
+        background-color: var(--check-color);
+        border: solid 3px var(--border-color);
+    }
+
+}

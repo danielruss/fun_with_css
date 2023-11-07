@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+    <head lang="en">
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+        <title>Grid demo</title>
+
+        <link href="./gridtest2.css" rel="stylesheet">
+    </head>
+    <body class="m-3">
+        <div class="grid">
+            <div class="instructions">During the <b>past 12 months</b>, about how much time do you usually spend doing these activities while you are <b>at work?</b> For your answers, please think about the time you spend at your job, <b>not counting time traveling to and from work.</b> If you exercise during your workday (such a going on walks or working out during breaks), please <b>include</b> those activities.</div>
+            <div class="grid-question-text grid-column-label"></div>
+            <div class="grid-column-label">None</div>
+            <div class="grid-column-label">&lt;30 min</div>
+            <div class="grid-column-label">45 min</div>
+            <div class="grid-column-label">1 hour</div>
+            <div class="grid-column-label">2 hours</div>
+            <div class="grid-column-label">3 to 4 hours</div>
+            <div class="grid-column-label">5 to 6 hours</div>
+            <div class="grid-column-label">7 to 8 hours</div>
+            <div class="grid-column-label">9+ hours</div>
+
+            
+            <div class="grid-question-text">Sitting with small arm movements <span class="fst-italic">(for example, desk or computer work, light assembly, driving, etc.)</span></div>
+            <div class="grid-response"> <label><input type="checkbox" name="gq1" id="gq1-1" value="1"><span>None</span></label></div>
+            <div class="grid-response"> <label><input type="checkbox" name="gq1" id="gq1-2" value="2"><span>&lt;30 min</span></label></div>
+            <div class="grid-response"> <label><input type="checkbox" name="gq1" id="gq1-3" value="3"><span>45 min</span></label></div>
+            <div class="grid-response"> <label><input type="checkbox" name="gq1" id="gq1-4" value="4"><span>1 hour</span></label></div>
+            <div class="grid-response"> <label><input type="checkbox" name="gq1" id="gq1-5" value="5"><span>2 hours</span></label></div>
+            <div class="grid-response"> <label><input type="checkbox" name="gq1" id="gq1-6" value="6"><span>3 to 4 hours</span></label></div>
+            <div class="grid-response"> <label><input type="checkbox" name="gq1" id="gq1-7" value="7"><span>5 to 6 hours</span></label></div>
+            <div class="grid-response"> <label><input type="checkbox" name="gq1" id="gq1-8" value="8"><span>7 to 8 hours</span></label></div>
+            <div class="grid-response"> <label><input type="checkbox" name="gq1" id="gq1-9" value="9"><span>9+ hours</span></label></div>
+            
+
+            <div class="grid-question-text fs-sm">Standing with some walking (for example, as a store clerk, filing, making copies, walking to/from meetings, working on an assembly line, etc.)</div>
+            <div class="grid-response"> <label><input type="checkbox" name="gq2" id="gq2-1" value="1"><span>None</span></label></div>
+            <div class="grid-response"> <label><input type="checkbox" name="gq1" id="gq1-2" value="2"><span>&lt;30 min</span></label></div>
+            <div class="grid-response"> <label><input type="checkbox" name="gq1" id="gq1-3" value="3"><span>45 min</span></label></div>
+            <div class="grid-response"> <label><input type="checkbox" name="gq1" id="gq1-4" value="4"><span>1 hour</span></label></div>
+            <div class="grid-response"> <label><input type="checkbox" name="gq1" id="gq1-5" value="5"><span>2 hours</span></label></div>
+            <div class="grid-response"> <label><input type="checkbox" name="gq1" id="gq1-6" value="6"><span>3 to 4 hours</span></label></div>
+            <div class="grid-response"> <label><input type="checkbox" name="gq1" id="gq1-7" value="7"><span>5 to 6 hours</span></label></div>
+            <div class="grid-response"> <label><input type="checkbox" name="gq1" id="gq1-8" value="8"><span>7 to 8 hours</span></label></div>
+            <div class="grid-response"> <label><input type="checkbox" name="gq1" id="gq1-9" value="9"><span>9+ hours</span></label></div>
+
+        </div>
+        
+
+        <div class="fixed-bottom" id="info"></div>
+    </body>
+
+    <script>
+        const info = document.getElementById("info")
+        function fillInfo(){
+            info.innerText=`${window.innerWidth} x ${window.innerHeight}`
+        }
+        window.addEventListener("resize",fillInfo)
+        fillInfo()
+    </script>
+</html>
