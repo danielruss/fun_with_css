@@ -49,6 +49,7 @@
         text-align: center;
         grid-column: 1/-1;
     }
+    .grid input[type="radio"],
     .grid input[type="checkbox"] {
         display: none;
     }
