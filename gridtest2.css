@@ -61,16 +61,20 @@
         display:none;
     }
 
-    .grid-response > label > input[type=checkbox] + span {
+    .grid-response > label > input[type="radio"] + span,
+    .grid-response > label > input[type="checkbox"] + span {
         display: block;
         background-color: var(--unselected-color);
         border: solid 3px var(--unselected-color);
     }
-    label input[type=checkbox]:hover + span {
+    label input[type="radio"]:hover + span,
+    label input[type="checkbox"]:hover + span {
         background-color: var(--hover-color);
         border: solid 3px var(--border-color);
     }
-    label input[type=checkbox]:checked + span {
+
+    label input[type="radio"]:checked + span,
+    label input[type="checkbox"]:checked + span {
         background-color: var(--check-color);
         border: solid 3px var(--border-color);
     }
